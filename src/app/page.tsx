@@ -68,30 +68,44 @@ export default function Home() {
           <h2>How to use</h2>
           <div>
             <h3>1. User Management</h3>
-
+            <p>Begin by creating a user account.</p>
             <Button type="submit" className="w-full">
-              Create an account
+              <a className="w-full" href="/register">
+                Create an account
+              </a>
             </Button>
           </div>
           <div>
-            <h3>2. Credentials-based Authentication</h3>
-            <Button type="submit" className="w-full">
-              Login with password
+            <h3>2. Credentials-Based Authentication</h3>
+            <p>Sign in using your account credentials.</p>
+            <Button asChild className="w-full">
+              <a className="w-full" href="/login">
+                Log in with your password
+              </a>
             </Button>
           </div>
           <div>
-            <h3>3. MultiFactor Authentication Management </h3>
+            <h3>3. Multi-Factor Authentication (MFA) Management </h3>
             <p>
-              Enable and configure your 2FA using an Authenticator application
+              Enhance security by enabling and configuring two-factor
+              authentication (2FA) through an authenticator app.
             </p>
-            <Button type="submit" className="w-full">
-              Enable / Disable MFA
+            <Button asChild className="w-full">
+              <a className="w-full" href="/admin/mfa">
+                Enable or disable MFA
+              </a>
             </Button>
           </div>
           <div>
-            <h3>3. 2FA Authentication</h3>
-            <Button type="submit" className="w-full">
-              Login with 2FA
+            <h3>4. 2FA Authentication</h3>
+            <p>
+              Log in with your credentials, then verify your identity using a
+              Time-Based One-Time Password (TOTP) or a backup code.
+            </p>
+            <Button asChild className="w-full">
+              <a className="w-full" href="/login-mfa">
+                Login with 2FA
+              </a>
             </Button>
           </div>
         </div>
