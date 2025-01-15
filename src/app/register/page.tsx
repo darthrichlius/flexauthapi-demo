@@ -1,4 +1,4 @@
-import { SignUpForm } from "@core/components/signup-form";
+import { SignUpForm } from "@/core/presentation/components/signup-form";
 
 export default function Register() {
   return (

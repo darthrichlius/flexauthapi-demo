@@ -1,8 +1,8 @@
-import { cn } from "@core/lib/utils";
-import { Button } from "@core/components/ui/button";
-import { Card, CardContent } from "@core/components/ui/card";
-import { Input } from "@core/components/ui/input";
-import { Label } from "@core/components/ui/label";
+import { cn } from "@/core/presentation/lib/utils";
+import { Button } from "@/core/presentation/components/ui/button";
+import { Card, CardContent } from "@/core/presentation/components/ui/card";
+import { Input } from "@/core/presentation/components/ui/input";
+import { Label } from "@/core/presentation/components/ui/label";
 
 export function SignUpForm({
   className,

@@ -1,4 +1,4 @@
-import { LoginForm } from "@core/components/login-form";
+import { LoginForm } from "@/core/presentation/components/login-form";
 
 export default function LoginPage() {
   return (
