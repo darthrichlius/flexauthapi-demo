@@ -1,7 +1,9 @@
 import Joi from "joi";
 import ValueObjectBase from "@core/domain/base/valueObject";
 
-const emailSchema = Joi.string().email().required();
+const emailSchema = Joi.string()
+  .email({ tlds: { allow: false } })
+  .required();
 
 export default class Email extends ValueObjectBase {
   constructor(public value: string) {
