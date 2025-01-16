@@ -1,18 +1,31 @@
-import { cn } from "@/core/presentation/lib/utils";
-import { Button } from "@/core/presentation/components/ui/button";
-import { Card, CardContent } from "@/core/presentation/components/ui/card";
-import { Input } from "@/core/presentation/components/ui/input";
-import { Label } from "@/core/presentation/components/ui/label";
+"use client";
+import { useState } from "react";
+import { cn } from "@core/presentation/lib/utils";
+import { Button } from "@core/presentation/components/ui/button";
+import { Card, CardContent } from "@core/presentation/components/ui/card";
+import { Input } from "@core/presentation/components/ui/input";
+import { Label } from "@core/presentation/components/ui/label";
+import useRegisterUser from "@core/presentation/hooks/users/useRegisterUser";
 
 export function SignUpForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { mutate: registerUser, isLoading, isError, error } = useRegisterUser();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    registerUser({ fullname, email, password });
+  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden">
         <CardContent className="grid p-0 md:grid-cols-2">
-          <form className="p-6 md:p-8">
+          <form className="p-6 md:p-8" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold">Hello!</h1>
@@ -22,7 +35,13 @@ export function SignUpForm({
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">Fullname</Label>
-                <Input id="email" type="text" placeholder="John Doe" required />
+                <Input
+                  id="email"
+                  type="text"
+                  placeholder="John Doe"
+                  required
+                  onChange={(e) => setFullname(e.target.value)}
+                />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
@@ -31,6 +50,7 @@ export function SignUpForm({
                   type="email"
                   placeholder="m@example.com"
                   required
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
@@ -43,7 +63,12 @@ export function SignUpForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  required
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <Button type="submit" className="w-full">
                 Login
