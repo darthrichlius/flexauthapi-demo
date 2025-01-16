@@ -34,9 +34,9 @@ export function SignUpForm({
                 </p>
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="email">Fullname</Label>
+                <Label htmlFor="fullname">Fullname</Label>
                 <Input
-                  id="email"
+                  id="fullname"
                   type="text"
                   placeholder="John Doe"
                   required
