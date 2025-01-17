@@ -1,6 +1,7 @@
 import { IUser } from "@core/domain/entities/user";
 import { IApiAdapter } from "../adapters/axiosAdapter";
 import { IUserDataAdapter } from "@core/domain/interfaces/iUserDataAdapter";
+import apiRoutes from "@/config/api/routes";
 
 export default class UserApi implements IUserDataAdapter {
   constructor(private adapter: IApiAdapter) {}
@@ -9,7 +10,7 @@ export default class UserApi implements IUserDataAdapter {
     /**
      * @todo specify the uri
      */
-    await this.adapter.post("uri", user);
+    await this.adapter.post(apiRoutes.registerUser.uri, user);
   }
 
   async findByEmail(email: string) {
