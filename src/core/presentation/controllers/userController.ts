@@ -35,6 +35,6 @@ const userManager = new UserManager(userRepository);
 /**
  * Controller Action Function to handle user registration.
  */
-export const userRegistration = (data: RegisterUserInputPayload) => {
-  return userManager.registerUser(data);
+export const userRegistration = async (data: RegisterUserInputPayload) => {
+  return await userManager.registerUser(data);
 };

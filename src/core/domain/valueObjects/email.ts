@@ -1,16 +1,14 @@
-import Joi from "joi";
+import { z } from "zod";
 import ValueObjectBase from "@core/domain/base/valueObject";
 
-const emailSchema = Joi.string()
-  .email({ tlds: { allow: false } })
-  .required();
+const emailSchema = z.string().email();
 
 export default class Email extends ValueObjectBase {
   constructor(public value: string) {
     super(value);
 
-    const { error } = this.isValid(emailSchema, value);
-    if (error) {
+    const result = this.isValid(emailSchema, value);
+    if (!result.success) {
       throw new Error("Invalid email address");
     }
   }

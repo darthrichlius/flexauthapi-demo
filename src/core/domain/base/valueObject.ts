@@ -1,11 +1,14 @@
-import { AnySchema, ValidationResult } from "joi";
 import { IValueObject } from "@core/domain/interfaces/iValueObject";
+import { SafeParseReturnType, ZodSchema } from "zod";
 
 export default abstract class ValueObjectBase implements IValueObject {
   protected constructor(protected value: any) {}
 
-  protected isValid(schema: AnySchema, value: string): ValidationResult {
-    return schema.validate(value);
+  protected isValid(
+    schema: ZodSchema,
+    value: any
+  ): SafeParseReturnType<any, any> {
+    return schema.safeParse(value);
   }
 
   equals(other: IValueObject): boolean {
